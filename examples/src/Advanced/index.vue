@@ -58,6 +58,7 @@ export default {
       data: [],
       total: 0,
       selection: [],
+      customSummary: [],
       summary: {},
 
       // `query` will be initialized to `{ limit: 10, offset: 0, sort: '', order: '' }` by default
@@ -81,9 +82,10 @@ export default {
   },
   methods: {
     handleQueryChange () {
-      mockData(this.query).then(({ rows, total, summary }) => {
+      mockData(this.query).then(({ rows, total, customSummary, summary }) => {
         this.data = rows
         this.total = total
+        this.customSummary = customSummary
         this.summary = summary
       })
     },
