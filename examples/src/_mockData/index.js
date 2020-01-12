@@ -42,7 +42,11 @@ export default function mockData(query) {
       uid: rows.length,
       age: rows.length && ~~(rows.map(({ age }) => age).reduce((sum, cur) => sum + cur) / rows.length), // average age
       country: uniq(rows.map(({ country }) => country)).length
-    }
+    },
+    customSummary: [
+      { uid: { value: 10 }, age: { value: 10, tdComp: 'IP' }, country: { value: 10 } },
+      { uid: { value: 20 }, age: { value: 20, tdComp: 'IP' }, country: { value: 20 } }
+    ]
   }
 
   const consoleGroupName = 'Mock data - ' + moment().format('YYYY-MM-DD HH:mm:ss')

@@ -37,7 +37,8 @@
     <table-frame v-bind="propsToNormalTable">
       <table-header v-bind="propsToNormalTable" />
       <table-body v-bind="propsToNormalTable" />
-      <table-footer v-if="summary" v-bind="propsToNormalTable" />
+      <table-custom-footer v-if="customSummary" v-bind="propsToNormalTable" />
+      <table-footer v-else-if="summary" v-bind="propsToNormalTable" />
     </table-frame>
   </div>
 </template>
@@ -46,6 +47,7 @@ import TableFrame from './TableFrame.vue'
 import TableHeader from './TableHeader.vue'
 import TableBody from './TableBody.vue'
 import TableFooter from './TableFooter.vue'
+import TableCustomFooter from './TableCustomFooter.vue'
 import props from '../_mixins/props'
 import getScrollWidth from '../_utils/getScrollWidth'
 import isColVisible from '../_utils/isColVisible'
@@ -54,7 +56,7 @@ import syncScroll from '../_utils/syncScroll'
 export default {
   name: 'Tbl',
   mixins: [props],
-  components: { TableFrame, TableHeader, TableBody, TableFooter },
+  components: { TableFrame, TableHeader, TableBody, TableFooter, TableCustomFooter },
   data: () => ({
     offsetLeft: 0,
     scrollWidth: getScrollWidth()
